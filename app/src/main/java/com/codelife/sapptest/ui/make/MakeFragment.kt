@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.codelife.sapptest.databinding.FragmentMakeBinding
+import com.codelife.sapptest.ui.pricevaluation.make.dto.MakeInfo
 import com.codelife.sapptest.utils.Injectors
 
 class MakeFragment : Fragment() {
@@ -56,8 +58,14 @@ class MakeFragment : Fragment() {
         viewModel.makes.observe(viewLifecycleOwner, Observer {
             hideLoading()
             viewBinding.makeRvList.visibility = View.VISIBLE
-            viewBinding.makeRvList.adapter = MakeListAdapter(it)
+            viewBinding.makeRvList.adapter = MakeListAdapter(it, this)
         })
+    }
+
+    fun onItemClick(makeInfo: MakeInfo) {
+        val navigateToModel =
+            MakeFragmentDirections.actionToModelFragment(makeInfo.makeId, makeInfo.makeName)
+        findNavController().navigate(navigateToModel)
     }
 
 }

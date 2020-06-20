@@ -7,7 +7,7 @@ import com.codelife.sapptest.databinding.ItemMakeBinding
 import com.codelife.sapptest.ui.pricevaluation.make.dto.MakeInfo
 import com.codelife.sapptest.utils.ListViewHolder
 
-class MakeListAdapter(private val list: List<MakeInfo>) :
+class MakeListAdapter(private val list: List<MakeInfo>, private val view: MakeFragment) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
