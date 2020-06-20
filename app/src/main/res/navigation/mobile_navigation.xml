@@ -38,6 +38,13 @@
             android:id="@+id/action_modelFragment_to_priceValuationFragment"
             app:destination="@id/priceValuationFragment" />
 
+        <argument
+            android:name="makeId"
+            app:argType="string" />
+
+        <argument
+            android:name="makeName"
+            app:argType="string" />
 
     </fragment>
 
