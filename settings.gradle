@@ -1,0 +1,2 @@
+rootProject.name = "SAppTest"
+include ':app'
