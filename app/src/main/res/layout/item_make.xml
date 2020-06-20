@@ -9,15 +9,18 @@
             name="makeInfo"
             type="com.codelife.sapptest.ui.pricevaluation.make.dto.MakeInfo" />
 
-
+        <variable
+            name="view"
+            type="com.codelife.sapptest.ui.make.MakeFragment" />
     </data>
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:onClick="@{() -> view.onItemClick(makeInfo)}"
+        android:padding="10dp">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/item_make_title"
@@ -25,8 +28,8 @@
             android:layout_height="wrap_content"
             android:padding="8dp"
             android:singleLine="true"
-            android:textColor="@color/black"
             android:text="@{makeInfo.makeName}"
+            android:textColor="@color/black"
             android:textSize="14sp"
             android:textStyle="bold"
             tools:text="@tools:sample/full_names" />
