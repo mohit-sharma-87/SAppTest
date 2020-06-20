@@ -9,6 +9,52 @@
         android:id="@+id/nav_home"
         android:name="com.codelife.sapptest.ui.home.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_nav_home_to_makeFragment"
+            app:destination="@id/makeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/makeFragment"
+        android:name="com.codelife.sapptest.ui.make.MakeFragment"
+        android:label="@string/label_make_fragment"
+        tools:layout="@layout/fragment_make">
+        <action
+            android:id="@+id/action_toModelFragment"
+            app:destination="@id/modelFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/modelFragment"
+        android:name="com.codelife.sapptest.ui.model.ModelFragment"
+        android:label="model_fragment"
+        tools:layout="@layout/fragment_model">
+
+        <action
+            android:id="@+id/action_modelFragment_to_trimFragment"
+            app:destination="@id/trimFragment" />
+        <action
+            android:id="@+id/action_modelFragment_to_priceValuationFragment"
+            app:destination="@id/priceValuationFragment" />
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/trimFragment"
+        android:name="com.codelife.sapptest.ui.trim.TrimFragment"
+        android:label="trim_fragment"
+        tools:layout="@layout/fragment_trim">
+        <action
+            android:id="@+id/action_trimFragment_to_priceValuationFragment"
+            app:destination="@id/priceValuationFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/priceValuationFragment"
+        android:name="com.codelife.sapptest.ui.pricevaluation.PriceValuationFragment"
+        android:label="price_valuation_fragment"
+        tools:layout="@layout/price_valuation_fragment" />
 
 </navigation>
