@@ -1,5 +1,6 @@
 package com.codelife.sapptest.ui.make
 
+import android.os.Parcelable
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.codelife.sapptest.R
@@ -12,6 +13,8 @@ class MakeViewModel(private val carInfoRepo: CarInfoRepo) : ViewModel() {
 
     val makes = MutableLiveData<List<MakeInfo>>()
     val errorMgs = MutableLiveData<Int>()
+    var state: Parcelable? = null
+
 
     fun getMakeInfo() {
         carInfoRepo

@@ -22,6 +22,7 @@ class MakeListAdapter(private val list: List<MakeInfo>, private val view: MakeFr
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val binding: ItemMakeBinding = (holder as ListViewHolder).binding as ItemMakeBinding
         binding.makeInfo = list[position]
+        binding.view = view
     }
 
 }

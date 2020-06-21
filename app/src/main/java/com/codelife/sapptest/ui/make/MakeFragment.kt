@@ -8,13 +8,20 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.navGraphViewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.codelife.sapptest.R
 import com.codelife.sapptest.databinding.FragmentMakeBinding
+import com.codelife.sapptest.repo.CarRepo
 import com.codelife.sapptest.ui.pricevaluation.make.dto.MakeInfo
-import com.codelife.sapptest.utils.Injectors
 
 class MakeFragment : Fragment() {
 
-    private lateinit var viewModel: MakeViewModel
+
+    private val viewModel by navGraphViewModels<MakeViewModel>(R.id.mobile_navigation) {
+        MakeViewModelFactory(CarRepo())
+    }
+
     private lateinit var viewBinding: FragmentMakeBinding
 
     override fun onCreateView(
@@ -27,10 +34,22 @@ class MakeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = Injectors.getMakeViewModel()
         observeMakes()
         observeOnErrors()
-        getMakes()
+
+        viewModel.state?.let {
+            (viewBinding.makeRvList.layoutManager as LinearLayoutManager).onRestoreInstanceState(it)
+        }
+
+        if (viewModel.state == null) {
+            getMakes()
+        }
+    }
+
+    private fun getMakes() {
+        showLoading()
+        viewBinding.makeRvList.visibility = View.GONE
+        viewModel.getMakeInfo()
     }
 
     private fun observeOnErrors() {
@@ -38,12 +57,6 @@ class MakeFragment : Fragment() {
             hideLoading()
             Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
         })
-    }
-
-    private fun getMakes() {
-        showLoading()
-        viewBinding.makeRvList.visibility = View.GONE
-        viewModel.getMakeInfo()
     }
 
     private fun showLoading() {
@@ -66,6 +79,12 @@ class MakeFragment : Fragment() {
         val navigateToModel =
             MakeFragmentDirections.actionToModelFragment(makeInfo.makeId, makeInfo.makeName)
         findNavController().navigate(navigateToModel)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        viewModel.state =
+            (viewBinding.makeRvList.layoutManager as LinearLayoutManager).onSaveInstanceState()
     }
 
 }
