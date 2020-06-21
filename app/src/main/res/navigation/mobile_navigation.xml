@@ -21,12 +21,12 @@
         android:label="@string/label_make_fragment"
         tools:layout="@layout/fragment_make">
         <action
-            app:popUpToInclusive="true"
             android:id="@+id/action_toModelFragment"
-            app:destination="@id/modelFragment" />
+            app:destination="@id/modelFragment"
+            app:popUpToInclusive="true" />
         <action
-            android:id="@+id/action_makeFragment_to_priceValuationFragment"
-            app:destination="@id/priceValuationFragment" />
+            android:id="@+id/action_makeFragment_to_yearFragment"
+            app:destination="@id/yearFragment" />
     </fragment>
 
     <fragment
@@ -36,12 +36,9 @@
         tools:layout="@layout/fragment_model">
 
         <action
-            app:popUpTo="@+id/makeFragment"
             android:id="@+id/action_modelFragment_to_trimFragment"
-            app:destination="@id/trimFragment" />
-        <action
-            android:id="@+id/action_modelFragment_to_priceValuationFragment"
-            app:destination="@id/priceValuationFragment" />
+            app:destination="@id/trimFragment"
+            app:popUpTo="@+id/makeFragment" />
 
         <argument
             android:name="makeId"
@@ -50,6 +47,9 @@
         <argument
             android:name="makeName"
             app:argType="string" />
+        <action
+            android:id="@+id/action_modelFragment_to_yearFragment"
+            app:destination="@id/yearFragment" />
 
     </fragment>
 
@@ -74,6 +74,9 @@
         <argument
             android:name="modelName"
             app:argType="string" />
+        <action
+            android:id="@+id/action_trimFragment_to_yearFragment"
+            app:destination="@id/yearFragment" />
 
     </fragment>
 
@@ -81,6 +84,50 @@
         android:id="@+id/priceValuationFragment"
         android:name="com.codelife.sapptest.ui.pricevaluation.PriceValuationFragment"
         android:label="Price Valuation"
-        tools:layout="@layout/price_valuation_fragment" />
+        tools:layout="@layout/price_valuation_fragment">
+
+        <argument
+            android:name="makeId"
+            app:argType="string" />
+
+        <argument
+            android:name="modelId"
+            app:argType="string"
+            app:nullable="true" />
+
+        <argument
+            android:name="trimId"
+            app:argType="string"
+            app:nullable="true" />
+
+        <argument
+            android:name="year"
+            app:argType="integer" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/yearFragment"
+        android:name="com.codelife.sapptest.ui.year.YearFragment"
+        android:label="@string/label_year"
+        tools:layout="@layout/fragment_year">
+
+        <argument
+            android:name="makeId"
+            app:argType="string" />
+
+        <argument
+            android:name="modelId"
+            app:argType="string" />
+
+        <argument
+            android:name="trimId"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_yearFragment_to_priceValuationFragment"
+            app:destination="@id/priceValuationFragment" />
+
+    </fragment>
 
 </navigation>

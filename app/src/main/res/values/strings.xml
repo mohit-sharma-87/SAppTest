@@ -14,5 +14,6 @@
 
     <string name="error_mgs">Error Message Template</string>
     <string name="label_make_fragment">Select Make</string>
+    <string name="label_year">Select Year</string>
 
 </resources>
