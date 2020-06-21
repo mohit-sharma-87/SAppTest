@@ -37,12 +37,12 @@ class MakeFragment : Fragment() {
         observeMakes()
         observeOnErrors()
 
-        viewModel.state?.let {
-            (viewBinding.makeRvList.layoutManager as LinearLayoutManager).onRestoreInstanceState(it)
-        }
-
         if (viewModel.state == null) {
             getMakes()
+        } else {
+            (viewBinding.makeRvList.layoutManager as LinearLayoutManager).onRestoreInstanceState(
+                viewModel.state
+            )
         }
     }
 

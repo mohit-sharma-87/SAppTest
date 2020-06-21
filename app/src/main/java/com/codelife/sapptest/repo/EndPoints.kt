@@ -1,5 +1,6 @@
 package com.codelife.sapptest.repo
 
+import com.codelife.sapptest.dao.ModelInfo
 import com.codelife.sapptest.ui.pricevaluation.make.dto.MakeInfo
 import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET
@@ -7,7 +8,9 @@ import retrofit2.http.GET
 interface EndPoints {
 
     @GET("static/makes/")
-    fun getModels(): Single<List<MakeInfo>>
+    fun getMakes(): Single<List<MakeInfo>>
 
+    @GET("static/models/")
+    fun getModel(): Single<List<ModelInfo>>
 
 }
