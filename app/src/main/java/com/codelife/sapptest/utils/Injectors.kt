@@ -6,6 +6,8 @@ import com.codelife.sapptest.ui.make.MakeViewModel
 import com.codelife.sapptest.ui.make.MakeViewModelFactory
 import com.codelife.sapptest.ui.model.ModelViewModel
 import com.codelife.sapptest.ui.model.ModelViewModelFactory
+import com.codelife.sapptest.ui.pricevaluation.PriceValuationViewModel
+import com.codelife.sapptest.ui.pricevaluation.PriceValuationViewModelFactory
 import com.codelife.sapptest.ui.trim.TrimViewModel
 import com.codelife.sapptest.ui.trim.TrimViewModelFactory
 
@@ -26,5 +28,9 @@ object Injectors {
 
     fun getTrimViewModel(): TrimViewModel {
         return TrimViewModelFactory(getCarRepo()).create(TrimViewModel::class.java)
+    }
+
+    fun getPriceValuationViewModel(): PriceValuationViewModel {
+        return PriceValuationViewModelFactory(getCarRepo()).create(PriceValuationViewModel::class.java)
     }
 }
