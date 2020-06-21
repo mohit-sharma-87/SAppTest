@@ -1,10 +1,12 @@
 package com.codelife.sapptest.repo
 
+import com.codelife.sapptest.dao.MakeInfo
 import com.codelife.sapptest.dao.ModelInfo
+import com.codelife.sapptest.dao.PriceValuation
 import com.codelife.sapptest.dao.TrimInfo
-import com.codelife.sapptest.ui.pricevaluation.make.dto.MakeInfo
 import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface EndPoints {
 
@@ -16,4 +18,12 @@ interface EndPoints {
 
     @GET("static/submodels/")
     fun getTrims(): Single<List<TrimInfo>>
+
+    @GET("v1/predict/price/")
+    fun getPriceValuation(
+        @Query("make_id") makeId: String,
+        @Query("year") year: Int,
+        @Query("model_id") modelId: String?,
+        @Query("submodel_id") trimId: String?
+    ): Single<PriceValuation>
 }

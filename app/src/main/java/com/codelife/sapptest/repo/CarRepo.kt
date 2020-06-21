@@ -1,9 +1,10 @@
 package com.codelife.sapptest.repo
 
+import com.codelife.sapptest.dao.MakeInfo
 import com.codelife.sapptest.dao.ModelInfo
+import com.codelife.sapptest.dao.PriceValuation
 import com.codelife.sapptest.dao.TrimInfo
 import com.codelife.sapptest.repo.network.NetworkClientFactory
-import com.codelife.sapptest.ui.pricevaluation.make.dto.MakeInfo
 import io.reactivex.rxjava3.core.Single
 
 class CarRepo : ICarRepo {
@@ -25,6 +26,24 @@ class CarRepo : ICarRepo {
     }
 
     override fun getTrim(makeId: String, modelId: String): Single<List<TrimInfo>> {
-        return webService.getTrims()
+        return webService.getTrims().map {
+            it.filter { trimInfo ->
+                trimInfo.makeId == makeId && trimInfo.modelMapping.contains(modelId)
+            }
+        }
+    }
+
+    override fun getPriceValuation(
+        makeId: String,
+        modelId: String?,
+        year: Int,
+        trim: String?
+    ): Single<PriceValuation> {
+        return webService.getPriceValuation(
+            makeId = makeId,
+            year = year,
+            modelId = modelId,
+            trimId = trim
+        )
     }
 }
