@@ -1,11 +1,12 @@
 package com.codelife.sapptest.repo
 
 import com.codelife.sapptest.dao.ModelInfo
+import com.codelife.sapptest.dao.TrimInfo
 import com.codelife.sapptest.repo.network.NetworkClientFactory
 import com.codelife.sapptest.ui.pricevaluation.make.dto.MakeInfo
 import io.reactivex.rxjava3.core.Single
 
-class CarRepo : CarInfoRepo {
+class CarRepo : ICarRepo {
 
     private val webService by lazy {
         NetworkClientFactory.create()
@@ -21,5 +22,9 @@ class CarRepo : CarInfoRepo {
                 modelInfo.makeId == makeId
             }
         }
+    }
+
+    override fun getTrim(makeId: String, modelId: String): Single<List<TrimInfo>> {
+        return webService.getTrims()
     }
 }
