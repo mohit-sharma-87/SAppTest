@@ -4,8 +4,8 @@ import android.os.Parcelable
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.codelife.sapptest.R
+import com.codelife.sapptest.dao.MakeInfo
 import com.codelife.sapptest.repo.ICarRepo
-import com.codelife.sapptest.ui.pricevaluation.make.dto.MakeInfo
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 

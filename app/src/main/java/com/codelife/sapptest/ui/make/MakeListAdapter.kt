@@ -3,8 +3,8 @@ package com.codelife.sapptest.ui.make
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.codelife.sapptest.dao.MakeInfo
 import com.codelife.sapptest.databinding.ItemMakeBinding
-import com.codelife.sapptest.ui.pricevaluation.make.dto.MakeInfo
 import com.codelife.sapptest.utils.ListViewHolder
 
 class MakeListAdapter(private val list: List<MakeInfo>, private val view: MakeFragment) :
