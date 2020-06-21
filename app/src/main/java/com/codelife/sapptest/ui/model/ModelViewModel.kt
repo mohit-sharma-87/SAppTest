@@ -5,11 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.codelife.sapptest.R
 import com.codelife.sapptest.dao.ModelInfo
-import com.codelife.sapptest.repo.CarInfoRepo
+import com.codelife.sapptest.repo.ICarRepo
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 
-class ModelViewModel(private val repo: CarInfoRepo) : ViewModel() {
+class ModelViewModel(private val repo: ICarRepo) : ViewModel() {
 
     val models = MutableLiveData<List<ModelInfo>>()
     val errorMgs = MutableLiveData<Int>()

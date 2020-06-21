@@ -4,12 +4,12 @@ import android.os.Parcelable
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.codelife.sapptest.R
-import com.codelife.sapptest.repo.CarInfoRepo
+import com.codelife.sapptest.repo.ICarRepo
 import com.codelife.sapptest.ui.pricevaluation.make.dto.MakeInfo
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 
-class MakeViewModel(private val carInfoRepo: CarInfoRepo) : ViewModel() {
+class MakeViewModel(private val ICarRepo: ICarRepo) : ViewModel() {
 
     val makes = MutableLiveData<List<MakeInfo>>()
     val errorMgs = MutableLiveData<Int>()
@@ -17,7 +17,7 @@ class MakeViewModel(private val carInfoRepo: CarInfoRepo) : ViewModel() {
 
 
     fun getMakeInfo() {
-        carInfoRepo
+        ICarRepo
             .getMakes()
             .map {
                 it
