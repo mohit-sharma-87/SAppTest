@@ -7,23 +7,23 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.codelife.sapptest.dao.TrimInfo
-import com.codelife.sapptest.databinding.FragmentModelBinding
-import com.codelife.sapptest.ui.model.ModelFragmentArgs
+import com.codelife.sapptest.databinding.FragmentTrimBinding
 import com.codelife.sapptest.utils.Injectors
 
 class TrimFragment : Fragment() {
 
     private val viewModel: TrimViewModel by lazy { Injectors.getTrimViewModel() }
-    private lateinit var viewBinding: FragmentModelBinding
-    private val args: ModelFragmentArgs by navArgs()
+    private lateinit var viewBinding: FragmentTrimBinding
+    private val args: TrimFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewBinding = FragmentModelBinding.inflate(inflater, container, false)
+        viewBinding = FragmentTrimBinding.inflate(inflater, container, false)
         return viewBinding.root
     }
 
@@ -37,7 +37,7 @@ class TrimFragment : Fragment() {
     private fun observeModels() {
         viewModel.trims.observe(viewLifecycleOwner, Observer {
             hideLoading()
-            viewBinding.modelRvList.adapter = TrimListAdapter(list = it, view = this)
+            viewBinding.trimRvList.adapter = TrimListAdapter(list = it, view = this)
         })
     }
 
@@ -49,20 +49,24 @@ class TrimFragment : Fragment() {
     }
 
     private fun showLoading() {
-        viewBinding.modelLookingUp.visibility = View.VISIBLE
+        viewBinding.trimLookingUp.visibility = View.VISIBLE
     }
 
     private fun hideLoading() {
-        viewBinding.modelLookingUp.visibility = View.GONE
+        viewBinding.trimLookingUp.visibility = View.GONE
     }
 
     fun onItemClick(trimInfo: TrimInfo) {
+        val directions = TrimFragmentDirections.actionTrimFragmentToYearFragment(
+            args.makeId, args.modelId, trimInfo.trimId
+        )
 
+        findNavController().navigate(directions)
     }
 
     private fun getTrims() {
         showLoading()
-
+        viewModel.getTrims(args.makeId, args.modelId)
     }
 
 }
