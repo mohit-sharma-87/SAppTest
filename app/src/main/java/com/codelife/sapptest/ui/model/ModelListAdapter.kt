@@ -3,8 +3,8 @@ package com.codelife.sapptest.ui.model
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.codelife.sapptest.dao.ModelInfo
 import com.codelife.sapptest.databinding.ItemModelBinding
+import com.codelife.sapptest.models.ModelInfo
 import com.codelife.sapptest.utils.ListViewHolder
 
 class ModelListAdapter(private val list: List<ModelInfo>, private val view: ModelFragment) :

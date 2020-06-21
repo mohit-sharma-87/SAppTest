@@ -3,7 +3,7 @@ package com.codelife.sapptest.ui.trim
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.codelife.sapptest.R
-import com.codelife.sapptest.dao.TrimInfo
+import com.codelife.sapptest.models.TrimInfo
 import com.codelife.sapptest.repo.ICarRepo
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers

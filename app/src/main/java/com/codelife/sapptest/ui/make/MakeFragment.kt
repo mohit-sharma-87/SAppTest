@@ -11,8 +11,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.navGraphViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.codelife.sapptest.R
-import com.codelife.sapptest.dao.MakeInfo
 import com.codelife.sapptest.databinding.FragmentMakeBinding
+import com.codelife.sapptest.models.MakeInfo
 import com.codelife.sapptest.repo.CarRepo
 
 class MakeFragment : Fragment() {

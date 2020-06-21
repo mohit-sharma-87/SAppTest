@@ -9,8 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.codelife.sapptest.dao.TrimInfo
 import com.codelife.sapptest.databinding.FragmentTrimBinding
+import com.codelife.sapptest.models.TrimInfo
 import com.codelife.sapptest.utils.Injectors
 
 class TrimFragment : Fragment() {

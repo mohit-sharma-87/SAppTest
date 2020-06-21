@@ -7,7 +7,7 @@
 
         <variable
             name="modelInfo"
-            type="com.codelife.sapptest.dao.ModelInfo" />
+            type="com.codelife.sapptest.models.ModelInfo" />
 
         <variable
             name="view"

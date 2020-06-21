@@ -9,8 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.codelife.sapptest.dao.ModelInfo
 import com.codelife.sapptest.databinding.FragmentModelBinding
+import com.codelife.sapptest.models.ModelInfo
 import com.codelife.sapptest.utils.Injectors
 
 class ModelFragment : Fragment() {

@@ -7,7 +7,7 @@
 
         <variable
             name="makeInfo"
-            type="com.codelife.sapptest.dao.MakeInfo" />
+            type="com.codelife.sapptest.models.MakeInfo" />
 
         <variable
             name="view"

@@ -4,7 +4,7 @@ import android.os.Parcelable
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.codelife.sapptest.R
-import com.codelife.sapptest.dao.ModelInfo
+import com.codelife.sapptest.models.ModelInfo
 import com.codelife.sapptest.repo.ICarRepo
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers

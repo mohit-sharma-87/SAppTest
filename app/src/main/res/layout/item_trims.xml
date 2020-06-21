@@ -7,7 +7,7 @@
 
         <variable
             name="trimInfo"
-            type="com.codelife.sapptest.dao.TrimInfo" />
+            type="com.codelife.sapptest.models.TrimInfo" />
 
         <variable
             name="view"

@@ -3,8 +3,8 @@ package com.codelife.sapptest.ui.trim
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.codelife.sapptest.dao.TrimInfo
 import com.codelife.sapptest.databinding.ItemTrimsBinding
+import com.codelife.sapptest.models.TrimInfo
 import com.codelife.sapptest.utils.ListViewHolder
 
 class TrimListAdapter(private val list: List<TrimInfo>, private val view: TrimFragment) :
