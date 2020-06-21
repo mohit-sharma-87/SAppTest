@@ -1,9 +1,9 @@
 package com.codelife.sapptest.repo
 
-import com.codelife.sapptest.dao.MakeInfo
-import com.codelife.sapptest.dao.ModelInfo
-import com.codelife.sapptest.dao.PriceValuation
-import com.codelife.sapptest.dao.TrimInfo
+import com.codelife.sapptest.models.MakeInfo
+import com.codelife.sapptest.models.ModelInfo
+import com.codelife.sapptest.models.PriceValuation
+import com.codelife.sapptest.models.TrimInfo
 import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET
 import retrofit2.http.Query

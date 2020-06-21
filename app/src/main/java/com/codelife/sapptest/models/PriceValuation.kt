@@ -1,4 +1,4 @@
-package com.codelife.sapptest.dao
+package com.codelife.sapptest.models
 
 import com.google.gson.annotations.SerializedName
 
