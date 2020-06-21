@@ -21,6 +21,7 @@
         android:label="@string/label_make_fragment"
         tools:layout="@layout/fragment_make">
         <action
+            app:popUpToInclusive="true"
             android:id="@+id/action_toModelFragment"
             app:destination="@id/modelFragment" />
     </fragment>
@@ -28,10 +29,11 @@
     <fragment
         android:id="@+id/modelFragment"
         android:name="com.codelife.sapptest.ui.model.ModelFragment"
-        android:label="model_fragment"
+        android:label="Select Model"
         tools:layout="@layout/fragment_model">
 
         <action
+            app:popUpTo="@+id/makeFragment"
             android:id="@+id/action_modelFragment_to_trimFragment"
             app:destination="@id/trimFragment" />
         <action
@@ -51,7 +53,7 @@
     <fragment
         android:id="@+id/trimFragment"
         android:name="com.codelife.sapptest.ui.trim.TrimFragment"
-        android:label="trim_fragment"
+        android:label="Select Trim"
         tools:layout="@layout/fragment_trim">
         <action
             android:id="@+id/action_trimFragment_to_priceValuationFragment"
@@ -61,7 +63,7 @@
     <fragment
         android:id="@+id/priceValuationFragment"
         android:name="com.codelife.sapptest.ui.pricevaluation.PriceValuationFragment"
-        android:label="price_valuation_fragment"
+        android:label="Price Valuation"
         tools:layout="@layout/price_valuation_fragment" />
 
 </navigation>
