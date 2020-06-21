@@ -1,4 +1,4 @@
-package com.codelife.sapptest.ui.pricevaluation.make.dto
+package com.codelife.sapptest.dao
 
 import com.google.gson.annotations.SerializedName
 import java.util.*
