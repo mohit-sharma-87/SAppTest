@@ -1,7 +1,38 @@
 package com.codelife.sapptest.ui.trim
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.codelife.sapptest.R
+import com.codelife.sapptest.dao.TrimInfo
+import com.codelife.sapptest.repo.ICarRepo
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.schedulers.Schedulers
 
-class TrimViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+class TrimViewModel(private val carRepo: ICarRepo) : ViewModel() {
+
+    val trims = MutableLiveData<List<TrimInfo>>()
+    val errorMgs = MutableLiveData<Int>()
+
+    fun getTrims(makeId: String, modelId: String) {
+        carRepo
+            .getTrim(makeId, modelId)
+            .map {
+                it
+                    .filter { trimInfo ->
+                        trimInfo.active
+                    }
+                    .sortedBy { trimInfo ->
+                        trimInfo.trimName
+                    }
+            }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                trims.value = it
+            }, {
+                // Log error to error framework in production
+                errorMgs.value = R.string.error_mgs
+                it.printStackTrace()
+            })
+    }
 }
