@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/trim_rv_list"
+        android:id="@+id/year_rv_list"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -18,7 +18,7 @@
         tools:listitem="@layout/item_trims" />
 
     <androidx.core.widget.ContentLoadingProgressBar
-        android:id="@+id/trim_looking_up"
+        android:id="@+id/year_looking_up"
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

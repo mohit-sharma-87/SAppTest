@@ -6,20 +6,20 @@
     <data>
 
         <variable
-            name="makeInfo"
-            type="com.codelife.sapptest.dao.MakeInfo" />
+            name="year"
+            type="Integer" />
 
         <variable
             name="view"
-            type="com.codelife.sapptest.ui.make.MakeFragment" />
+            type="com.codelife.sapptest.ui.year.YearFragment" />
     </data>
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="@{() -> view.onItemClick(year)}"
         android:orientation="vertical"
-        android:onClick="@{() -> view.onItemClick(makeInfo)}"
         android:padding="10dp">
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:padding="8dp"
             android:singleLine="true"
-            android:text="@{makeInfo.makeName}"
+            android:text="@{year.toString()}"
             android:textColor="@color/black"
             android:textSize="14sp"
             android:textStyle="bold"
