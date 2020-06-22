@@ -1,14 +1,13 @@
 package com.codelife.sapptest.ui.trim
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.codelife.sapptest.R
 import com.codelife.sapptest.databinding.FragmentTrimBinding
 import com.codelife.sapptest.models.TrimInfo
 import com.codelife.sapptest.utils.Injectors
@@ -23,6 +22,7 @@ class TrimFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        setHasOptionsMenu(true)
         viewBinding = FragmentTrimBinding.inflate(inflater, container, false)
         return viewBinding.root
     }
@@ -67,6 +67,24 @@ class TrimFragment : Fragment() {
     private fun getTrims() {
         showLoading()
         viewModel.getTrims(args.makeId, args.modelId)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.main, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.action_skip) {
+            navigateToYearSelection()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun navigateToYearSelection() {
+        val direction =
+            TrimFragmentDirections.actionTrimFragmentToYearFragment(args.makeId, args.modelId, null)
+        findNavController().navigate(direction)
     }
 
 }

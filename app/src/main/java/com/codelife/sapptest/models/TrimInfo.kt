@@ -17,7 +17,7 @@ data class TrimInfo(
     @SerializedName("id") val trimId: String,
 
     @ColumnInfo
-    @SerializedName("make_id") val makeId: String?,
+    @SerializedName("make_id") val makeId: String,
 
     @ColumnInfo
     @SerializedName("name") val trimName: String,

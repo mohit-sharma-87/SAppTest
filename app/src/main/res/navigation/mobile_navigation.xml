@@ -115,10 +115,12 @@
             app:argType="string" />
 
         <argument
+            app:nullable="true"
             android:name="modelId"
             app:argType="string" />
 
         <argument
+            app:nullable="true"
             android:name="trimId"
             app:argType="string" />
 
