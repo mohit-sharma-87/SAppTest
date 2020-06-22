@@ -79,6 +79,12 @@ class MakeFragment : Fragment() {
         val navigateToModel =
             MakeFragmentDirections.actionToModelFragment(makeInfo.makeId, makeInfo.makeName)
         findNavController().navigate(navigateToModel)
+
+        Toast.makeText(
+            requireContext(),
+            makeInfo.updateDate,
+            Toast.LENGTH_LONG
+        ).show()
     }
 
     override fun onPause() {
