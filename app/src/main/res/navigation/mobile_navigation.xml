@@ -45,9 +45,11 @@
         <argument
             android:name="makeName"
             app:argType="string" />
+
         <action
             android:id="@+id/action_modelFragment_to_yearFragment"
-            app:destination="@id/yearFragment" />
+            app:destination="@id/yearFragment"
+            app:popUpTo="@id/makeFragment" />
 
     </fragment>
 
@@ -72,7 +74,9 @@
         <argument
             android:name="modelName"
             app:argType="string" />
+
         <action
+            app:popUpTo="@id/modelFragment"
             android:id="@+id/action_trimFragment_to_yearFragment"
             app:destination="@id/yearFragment" />
 

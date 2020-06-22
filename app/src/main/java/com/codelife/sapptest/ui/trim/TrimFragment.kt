@@ -32,6 +32,7 @@ class TrimFragment : Fragment() {
         getTrims()
         observeModels()
         observeOnErrors()
+        observeTrimNotFound()
     }
 
     private fun observeModels() {
@@ -85,6 +86,20 @@ class TrimFragment : Fragment() {
         val direction =
             TrimFragmentDirections.actionTrimFragmentToYearFragment(args.makeId, args.modelId, null)
         findNavController().navigate(direction)
+    }
+
+    private fun observeTrimNotFound() {
+        viewModel.noElement.observe(viewLifecycleOwner, Observer {
+            if (it) {
+                hideLoading()
+                navigateToYearSelection()
+                Toast.makeText(
+                    requireContext(),
+                    getString(R.string.error_no_trims),
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        })
     }
 
 }
