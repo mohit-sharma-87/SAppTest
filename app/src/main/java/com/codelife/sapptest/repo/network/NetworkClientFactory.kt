@@ -5,7 +5,7 @@ import com.codelife.sapptest.repo.EndPoints
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 interface NetworkClientFactory {
@@ -25,7 +25,7 @@ interface NetworkClientFactory {
             val httpClient = OkHttpClient.Builder().addNetworkInterceptor(interceptor).build()
 
             val retrofit = Retrofit.Builder()
-                .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(httpClient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(BuildConfig.HOST_URL)

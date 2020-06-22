@@ -4,7 +4,7 @@ import com.codelife.sapptest.models.MakeInfo
 import com.codelife.sapptest.models.ModelInfo
 import com.codelife.sapptest.models.PriceValuation
 import com.codelife.sapptest.models.TrimInfo
-import io.reactivex.rxjava3.core.Single
+import io.reactivex.Single
 
 interface ICarRepo {
 

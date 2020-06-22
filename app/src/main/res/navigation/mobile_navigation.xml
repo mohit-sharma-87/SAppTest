@@ -22,8 +22,7 @@
         tools:layout="@layout/fragment_make">
         <action
             android:id="@+id/action_toModelFragment"
-            app:destination="@id/modelFragment"
-            app:popUpToInclusive="true" />
+            app:destination="@id/modelFragment" />
         <action
             android:id="@+id/action_makeFragment_to_yearFragment"
             app:destination="@id/yearFragment" />

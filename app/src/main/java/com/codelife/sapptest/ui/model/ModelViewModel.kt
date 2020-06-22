@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel
 import com.codelife.sapptest.R
 import com.codelife.sapptest.models.ModelInfo
 import com.codelife.sapptest.repo.ICarRepo
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.schedulers.Schedulers
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 class ModelViewModel(private val repo: ICarRepo) : ViewModel() {
 

@@ -6,10 +6,10 @@ import androidx.lifecycle.ViewModel
 import com.codelife.sapptest.R
 import com.codelife.sapptest.models.MakeInfo
 import com.codelife.sapptest.repo.ICarRepo
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.schedulers.Schedulers
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
-class MakeViewModel(private val ICarRepo: ICarRepo) : ViewModel() {
+class MakeViewModel(private val carRepo: ICarRepo) : ViewModel() {
 
     val makes = MutableLiveData<List<MakeInfo>>()
     val errorMgs = MutableLiveData<Int>()
@@ -17,7 +17,7 @@ class MakeViewModel(private val ICarRepo: ICarRepo) : ViewModel() {
 
 
     fun getMakeInfo() {
-        ICarRepo
+        carRepo
             .getMakes()
             .map {
                 it
@@ -34,7 +34,7 @@ class MakeViewModel(private val ICarRepo: ICarRepo) : ViewModel() {
             .subscribe({
                 makes.value = it
             }, {
-                // Log error to error framework in production
+                it.printStackTrace()
                 errorMgs.value = R.string.error_mgs
             })
     }

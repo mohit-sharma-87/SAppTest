@@ -7,18 +7,19 @@ import androidx.room.Query
 import com.codelife.sapptest.models.MakeInfo
 import com.codelife.sapptest.models.ModelInfo
 import com.codelife.sapptest.models.TrimInfo
+import io.reactivex.Single
 
 @Dao
 interface CarInfoDao {
 
     @Query("SELECT * FROM MakeInfo")
-    fun getMakes(): List<MakeInfo>
+    fun getMakes(): Single<List<MakeInfo>>
 
     @Query("SELECT * FROM ModelInfo WHERE makeId = :makeId")
-    fun getModels(makeId: String): List<ModelInfo>
+    fun getModels(makeId: String): Single<List<ModelInfo>>
 
-    @Query("SELECT * FROM TrimInfo WHERE makeId = :makeId AND modelMapping IN (:modelId)")
-    fun getTrims(makeId: String, modelId: String): List<TrimInfo>
+    @Query("SELECT * FROM TrimInfo WHERE makeId = :makeId AND modelMapping LIKE :modelId")
+    fun getTrims(makeId: String, modelId: String): Single<List<TrimInfo>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addUpdateMake(makes: List<MakeInfo>)
