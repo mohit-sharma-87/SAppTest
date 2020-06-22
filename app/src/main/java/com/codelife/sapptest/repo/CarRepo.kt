@@ -57,17 +57,21 @@ class CarRepo(private val networkDao: EndPoints, private val databaseDao: CarInf
 
 
     private fun getMakeFromNetwork(): Single<List<MakeInfo>> {
-        return networkDao.getMakes().doOnSuccess(databaseDao::addUpdateMake)
+        return networkDao.getMakes()
+            .map { it.filter { makeInfo -> makeInfo.active } }
+            .doOnSuccess(databaseDao::addUpdateMake)
     }
 
     private fun getModelFromNetwork(makeId: String): Single<List<ModelInfo>> {
         return networkDao.getModel()
+            .map { it.filter { modelInfo -> modelInfo.active } }
             .doOnSuccess(databaseDao::addUpdateModel)
             .map { it.filter { modelInfo -> modelInfo.makeId == makeId } }
     }
 
     private fun getTrimFromNetwork(makeId: String, modelId: String): Single<List<TrimInfo>> {
         return networkDao.getTrims()
+            .map { it.filter { trimInfo -> trimInfo.active } }
             .doOnSuccess(databaseDao::addUpdateTrim)
             .map {
                 it.filter { trimInfo ->

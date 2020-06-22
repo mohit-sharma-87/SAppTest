@@ -36,8 +36,7 @@
 
         <action
             android:id="@+id/action_modelFragment_to_trimFragment"
-            app:destination="@id/trimFragment"
-            app:popUpTo="@+id/makeFragment" />
+            app:destination="@id/trimFragment" />
 
         <argument
             android:name="makeId"

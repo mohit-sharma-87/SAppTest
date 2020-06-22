@@ -19,15 +19,10 @@ class ModelViewModel(private val repo: ICarRepo) : ViewModel() {
         repo
             .getModels(makeId)
             .map {
-                it
-                    .filter { modelInfo ->
-                        modelInfo.active
-                    }
-                    .sortedBy { modelInfo ->
-                        modelInfo.modelName
-                    }
+                it.sortedBy { modelInfo ->
+                    modelInfo.modelName
+                }
             }
-
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({

@@ -28,7 +28,6 @@ class MakeViewModel(private val carRepo: ICarRepo) : ViewModel() {
                         makeInfo.makeName
                     }
             }
-
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
