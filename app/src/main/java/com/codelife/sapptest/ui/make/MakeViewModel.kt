@@ -1,6 +1,6 @@
 package com.codelife.sapptest.ui.make
 
-import android.os.Parcelable
+import android.annotation.SuppressLint
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.codelife.sapptest.R
@@ -13,9 +13,12 @@ class MakeViewModel(private val carRepo: ICarRepo) : ViewModel() {
 
     val makes = MutableLiveData<List<MakeInfo>>()
     val errorMgs = MutableLiveData<Int>()
-    var state: Parcelable? = null
 
+    init {
+        getMakeInfo()
+    }
 
+    @SuppressLint("CheckResult")
     fun getMakeInfo() {
         carRepo
             .getMakes()
