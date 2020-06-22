@@ -15,7 +15,7 @@ import com.codelife.sapptest.utils.Injectors
 
 class ModelFragment : Fragment() {
 
-    private val viewModel: ModelViewModel by lazy { Injectors.getModelViewModel() }
+    private val viewModel: ModelViewModel by lazy { Injectors.getModelViewModel(requireContext()) }
     private lateinit var viewBinding: FragmentModelBinding
     private val args: ModelFragmentArgs by navArgs()
 

@@ -12,7 +12,7 @@ import com.codelife.sapptest.utils.Injectors
 class PriceValuationFragment : Fragment() {
 
     private val viewModel: PriceValuationViewModel by lazy {
-        Injectors.getPriceValuationViewModel()
+        Injectors.getPriceValuationViewModel(requireContext())
     }
 
     private val args by navArgs<PriceValuationFragmentArgs>()

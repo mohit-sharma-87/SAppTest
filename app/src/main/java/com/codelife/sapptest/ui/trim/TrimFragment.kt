@@ -15,7 +15,7 @@ import com.codelife.sapptest.utils.Injectors
 
 class TrimFragment : Fragment() {
 
-    private val viewModel: TrimViewModel by lazy { Injectors.getTrimViewModel() }
+    private val viewModel: TrimViewModel by lazy { Injectors.getTrimViewModel(requireContext()) }
     private lateinit var viewBinding: FragmentTrimBinding
     private val args: TrimFragmentArgs by navArgs()
 

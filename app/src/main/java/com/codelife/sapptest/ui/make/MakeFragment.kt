@@ -13,13 +13,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.codelife.sapptest.R
 import com.codelife.sapptest.databinding.FragmentMakeBinding
 import com.codelife.sapptest.models.MakeInfo
-import com.codelife.sapptest.repo.CarRepo
+import com.codelife.sapptest.utils.Injectors
 
 class MakeFragment : Fragment() {
 
 
     private val viewModel by navGraphViewModels<MakeViewModel>(R.id.mobile_navigation) {
-        MakeViewModelFactory(CarRepo())
+        MakeViewModelFactory(Injectors.getCarRepo(requireContext()))
     }
 
     private lateinit var viewBinding: FragmentMakeBinding
