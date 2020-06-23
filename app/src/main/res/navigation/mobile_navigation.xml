@@ -76,9 +76,14 @@
             app:argType="string" />
 
         <action
-            app:popUpTo="@id/modelFragment"
             android:id="@+id/action_trimFragment_to_yearFragment"
             app:destination="@id/yearFragment" />
+
+        <action
+            app:popUpTo="@id/modelFragment"
+            android:id="@+id/action_trimFragment_skip_to_yearFragment"
+            app:destination="@id/yearFragment" />
+
 
     </fragment>
 
@@ -130,6 +135,7 @@
 
         <action
             android:id="@+id/action_yearFragment_to_priceValuationFragment"
+            app:popUpTo="@id/nav_home"
             app:destination="@id/priceValuationFragment" />
 
     </fragment>
