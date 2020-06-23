@@ -46,8 +46,11 @@ class YearFragment : Fragment() {
 
         val directions = YearFragmentDirections.actionYearFragmentToPriceValuationFragment(
             args.makeId,
+            args.makeName,
             args.modelId,
+            args.modelName,
             args.trimId,
+            args.trimName,
             year
         )
 

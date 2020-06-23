@@ -84,7 +84,14 @@ class ModelFragment : Fragment() {
 
     private fun navigateToYearSelection() {
         val direction =
-            ModelFragmentDirections.actionModelFragmentToYearFragment(args.makeId, null, null)
+            ModelFragmentDirections.actionModelFragmentToYearFragment(
+                args.makeId,
+                args.makeName,
+                null,
+                null,
+                null,
+                null
+            )
         findNavController().navigate(direction)
     }
 }

@@ -59,7 +59,12 @@ class TrimFragment : Fragment() {
 
     fun onItemClick(trimInfo: TrimInfo) {
         val directions = TrimFragmentDirections.actionTrimFragmentToYearFragment(
-            args.makeId, args.modelId, trimInfo.trimId
+            args.makeId,
+            args.makeName,
+            args.modelId,
+            args.modelName,
+            trimInfo.trimId,
+            trimInfo.trimName
         )
 
         findNavController().navigate(directions)
@@ -86,7 +91,10 @@ class TrimFragment : Fragment() {
         val direction =
             TrimFragmentDirections.actionTrimFragmentSkipToYearFragment(
                 args.makeId,
+                args.makeName,
                 args.modelId,
+                args.modelName,
+                null,
                 null
             )
         findNavController().navigate(direction)

@@ -98,12 +98,27 @@
             app:argType="string" />
 
         <argument
+            android:name="makeName"
+            app:argType="string" />
+
+
+        <argument
             android:name="modelId"
             app:argType="string"
             app:nullable="true" />
 
         <argument
+            app:nullable="true"
+            android:name="modelName"
+            app:argType="string" />
+
+        <argument
             android:name="trimId"
+            app:argType="string"
+            app:nullable="true" />
+
+        <argument
+            android:name="trimName"
             app:argType="string"
             app:nullable="true" />
 
@@ -124,14 +139,28 @@
             app:argType="string" />
 
         <argument
-            app:nullable="true"
-            android:name="modelId"
+            android:name="makeName"
             app:argType="string" />
 
         <argument
+            android:name="modelId"
+            app:argType="string"
+            app:nullable="true" />
+
+        <argument
             app:nullable="true"
-            android:name="trimId"
+            android:name="modelName"
             app:argType="string" />
+
+        <argument
+            android:name="trimId"
+            app:argType="string"
+            app:nullable="true" />
+
+        <argument
+            android:name="trimName"
+            app:argType="string"
+            app:nullable="true" />
 
         <action
             android:id="@+id/action_yearFragment_to_priceValuationFragment"
