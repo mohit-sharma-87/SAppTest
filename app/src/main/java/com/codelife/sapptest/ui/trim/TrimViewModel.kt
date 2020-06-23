@@ -14,10 +14,19 @@ class TrimViewModel(private val carRepo: ICarRepo) : ViewModel() {
 
     val trims = MutableLiveData<List<TrimInfo>>()
     val errorMgs = MutableLiveData<Int>()
-    val noElement = MutableLiveData<Boolean>(false)
+    val noElement = MutableLiveData(false)
+    private var trimCacheKey = ""
 
     @SuppressLint("CheckResult")
     fun getTrims(makeId: String, modelId: String) {
+
+        if (trimCacheKey.isBlank() || trimCacheKey != makeId + modelId) {
+            trimCacheKey = makeId + modelId
+            getTrimsFromRepo(makeId, modelId)
+        }
+    }
+
+    private fun getTrimsFromRepo(makeId: String, modelId: String) {
         carRepo
             .getTrim(makeId, modelId)
             .map {
