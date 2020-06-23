@@ -13,6 +13,7 @@ class MakeViewModel(private val carRepo: ICarRepo) : ViewModel() {
 
     val makes = MutableLiveData<List<MakeInfo>>()
     val errorMgs = MutableLiveData<Int>()
+    val selected = MutableLiveData<MakeInfo>()
 
     init {
         getMakeInfo()

@@ -35,6 +35,7 @@ class MakeFragment : Fragment() {
         getMakes()
         observeMakes()
         observeOnErrors()
+        observeOnMakeSelected()
     }
 
     private fun getMakes() {
@@ -65,7 +66,18 @@ class MakeFragment : Fragment() {
         })
     }
 
+    private fun observeOnMakeSelected() {
+        viewModel.selected.observe(viewLifecycleOwner, Observer {
+            (viewBinding.makeRvList.adapter as MakeListAdapter).updateSelectedValue(it)
+        })
+    }
+
     fun onItemClick(makeInfo: MakeInfo) {
+        viewModel.selected.value = makeInfo
+        goToNextScreen(viewModel.selected.value as MakeInfo)
+    }
+
+    private fun goToNextScreen(makeInfo: MakeInfo) {
         val navigateToModel =
             MakeFragmentDirections.actionToModelFragment(makeInfo.makeId, makeInfo.makeName)
         findNavController().navigate(navigateToModel)
