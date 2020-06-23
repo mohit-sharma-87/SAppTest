@@ -77,14 +77,18 @@ class TrimFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.action_skip) {
-            navigateToYearSelection()
+            navigateToYearSelectionOnSkip()
         }
         return super.onOptionsItemSelected(item)
     }
 
-    private fun navigateToYearSelection() {
+    private fun navigateToYearSelectionOnSkip() {
         val direction =
-            TrimFragmentDirections.actionTrimFragmentToYearFragment(args.makeId, args.modelId, null)
+            TrimFragmentDirections.actionTrimFragmentSkipToYearFragment(
+                args.makeId,
+                args.modelId,
+                null
+            )
         findNavController().navigate(direction)
     }
 
@@ -92,7 +96,7 @@ class TrimFragment : Fragment() {
         viewModel.noElement.observe(viewLifecycleOwner, Observer {
             if (it) {
                 hideLoading()
-                navigateToYearSelection()
+                navigateToYearSelectionOnSkip()
                 Toast.makeText(
                     requireContext(),
                     getString(R.string.error_no_trims),
