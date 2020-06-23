@@ -1,6 +1,6 @@
 package com.codelife.sapptest.ui.model
 
-import android.os.Parcelable
+import android.annotation.SuppressLint
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.codelife.sapptest.R
@@ -13,9 +13,17 @@ class ModelViewModel(private val repo: ICarRepo) : ViewModel() {
 
     val models = MutableLiveData<List<ModelInfo>>()
     val errorMgs = MutableLiveData<Int>()
-    var state: Parcelable? = null
+    private var cacheKey: String = ""
 
     fun getModels(makeId: String) {
+        if (cacheKey.isBlank() || cacheKey != makeId) {
+            cacheKey = makeId
+            getModelsFromRepo(makeId)
+        }
+    }
+
+    @SuppressLint("CheckResult")
+    private fun getModelsFromRepo(makeId: String) {
         repo
             .getModels(makeId)
             .map {
@@ -30,7 +38,6 @@ class ModelViewModel(private val repo: ICarRepo) : ViewModel() {
             }, {
                 // Log error to error framework in production
                 errorMgs.value = R.string.error_mgs
-                it.printStackTrace()
             })
     }
 
