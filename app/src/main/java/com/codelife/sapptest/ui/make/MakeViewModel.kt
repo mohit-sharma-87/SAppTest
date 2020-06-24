@@ -25,9 +25,6 @@ class MakeViewModel(private val carRepo: ICarRepo) : ViewModel() {
             .getMakes()
             .map {
                 it
-                    .filter { makeInfo ->
-                        makeInfo.active
-                    }
                     .sortedBy { makeInfo ->
                         makeInfo.makeName
                     }

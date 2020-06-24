@@ -7,7 +7,6 @@ import com.codelife.sapptest.models.TrimInfo
 import com.codelife.sapptest.repo.database.CarInfoDao
 import io.reactivex.Observable
 import io.reactivex.Single
-import io.reactivex.schedulers.Schedulers
 
 class CarRepo(private val networkDao: EndPoints, private val databaseDao: CarInfoDao) : ICarRepo {
 
@@ -17,8 +16,9 @@ class CarRepo(private val networkDao: EndPoints, private val databaseDao: CarInf
 
         return Observable.concat(getFromDB, getFromNetwork)
             .filter { it.isNotEmpty() }
-            .subscribeOn(Schedulers.io())
-            .firstElement().toSingle()
+            .onErrorResumeNext(getFromNetwork)
+            .firstElement()
+            .toSingle()
     }
 
     override fun getModels(makeId: String): Single<List<ModelInfo>> {
@@ -27,8 +27,8 @@ class CarRepo(private val networkDao: EndPoints, private val databaseDao: CarInf
 
         return Observable.concat(getFromDB, getFromNetwork)
             .filter { it.isNotEmpty() }
-            .subscribeOn(Schedulers.io())
-            .firstElement().toSingle()
+            .firstElement()
+            .toSingle()
     }
 
     override fun getTrim(makeId: String, modelId: String): Single<List<TrimInfo>> {
@@ -37,8 +37,8 @@ class CarRepo(private val networkDao: EndPoints, private val databaseDao: CarInf
 
         return Observable.concat(getFromDB, getFromNetwork)
             .filter { it.isNotEmpty() }
-            .subscribeOn(Schedulers.io())
-            .firstElement().toSingle()
+            .firstElement()
+            .toSingle()
     }
 
     override fun getPriceValuation(
