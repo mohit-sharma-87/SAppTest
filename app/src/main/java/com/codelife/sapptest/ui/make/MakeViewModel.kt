@@ -20,7 +20,7 @@ class MakeViewModel(private val carRepo: ICarRepo) : ViewModel() {
     }
 
     @SuppressLint("CheckResult")
-    fun getMakeInfo() {
+    private fun getMakeInfo() {
         carRepo
             .getMakes()
             .map {
