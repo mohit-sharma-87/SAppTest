@@ -16,6 +16,7 @@ class TrimViewModel(private val carRepo: ICarRepo) : ViewModel() {
     val errorMgs = MutableLiveData<Int>()
     val noElement = MutableLiveData(false)
     private var trimCacheKey = ""
+    val selectedValue = MutableLiveData<TrimInfo>()
 
     @SuppressLint("CheckResult")
     fun getTrims(makeId: String, modelId: String) {

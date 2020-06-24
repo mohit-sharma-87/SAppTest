@@ -14,6 +14,7 @@ class ModelViewModel(private val repo: ICarRepo) : ViewModel() {
     val models = MutableLiveData<List<ModelInfo>>()
     val errorMgs = MutableLiveData<Int>()
     private var cacheKey: String = ""
+    val selectedValue = MutableLiveData<ModelInfo>()
 
     fun getModels(makeId: String) {
         if (cacheKey.isBlank() || cacheKey != makeId) {

@@ -32,6 +32,7 @@ class ModelFragment : Fragment() {
         getModels()
         observeModels()
         observeOnErrors()
+        observeOnModelSelected()
     }
 
     private fun observeModels() {
@@ -57,6 +58,12 @@ class ModelFragment : Fragment() {
     }
 
     fun onItemClick(modelInfo: ModelInfo) {
+
+        viewModel.selectedValue.value = modelInfo
+        goToNextScreen(viewModel.selectedValue.value as ModelInfo)
+    }
+
+    private fun goToNextScreen(modelInfo: ModelInfo) {
         val directions = ModelFragmentDirections.actionModelFragmentToTrimFragment(
             args.makeId, args.makeName, modelInfo.modelId, modelInfo.modelName
         )
@@ -67,7 +74,6 @@ class ModelFragment : Fragment() {
         showLoading()
         viewModel.getModels(args.makeId)
     }
-
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
@@ -81,17 +87,34 @@ class ModelFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
-
     private fun navigateToYearSelection() {
+        val modelName = if (viewModel.selectedValue.value == null) {
+            null
+        } else {
+            (viewModel.selectedValue.value as ModelInfo).modelName
+        }
+
+        val modelId = if (viewModel.selectedValue.value == null) {
+            null
+        } else {
+            (viewModel.selectedValue.value as ModelInfo).modelId
+        }
+
         val direction =
             ModelFragmentDirections.actionModelFragmentToYearFragment(
                 args.makeId,
                 args.makeName,
-                null,
-                null,
+                modelId,
+                modelName,
                 null,
                 null
             )
         findNavController().navigate(direction)
+    }
+
+    private fun observeOnModelSelected() {
+        viewModel.selectedValue.observe(viewLifecycleOwner, Observer {
+            (viewBinding.modelRvList.adapter as ModelListAdapter).updateSelectedValue(it)
+        })
     }
 }

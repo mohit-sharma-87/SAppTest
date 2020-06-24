@@ -30,12 +30,13 @@ class TrimFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getTrims()
-        observeModels()
+        observeTrims()
         observeOnErrors()
         observeTrimNotFound()
+        observeOnTrimSelected()
     }
 
-    private fun observeModels() {
+    private fun observeTrims() {
         viewModel.trims.observe(viewLifecycleOwner, Observer {
             hideLoading()
             viewBinding.trimRvList.adapter = TrimListAdapter(list = it, view = this)
@@ -58,13 +59,16 @@ class TrimFragment : Fragment() {
     }
 
     fun onItemClick(trimInfo: TrimInfo) {
+        viewModel.selectedValue.value = trimInfo
+
+
         val directions = TrimFragmentDirections.actionTrimFragmentToYearFragment(
             args.makeId,
             args.makeName,
             args.modelId,
             args.modelName,
-            trimInfo.trimId,
-            trimInfo.trimName
+            viewModel.selectedValue.value!!.trimId,
+            viewModel.selectedValue.value!!.trimName
         )
 
         findNavController().navigate(directions)
@@ -111,6 +115,12 @@ class TrimFragment : Fragment() {
                     Toast.LENGTH_LONG
                 ).show()
             }
+        })
+    }
+
+    private fun observeOnTrimSelected() {
+        viewModel.selectedValue.observe(viewLifecycleOwner, Observer {
+            (viewBinding.trimRvList.adapter as TrimListAdapter).updateSelectedValue(it)
         })
     }
 
