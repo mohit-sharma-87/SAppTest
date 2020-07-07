@@ -32,13 +32,13 @@ class MakeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        getMakes()
+        onScreenLoad()
         observeMakes()
         observeOnErrors()
         observeOnMakeSelected()
     }
 
-    private fun getMakes() {
+    private fun onScreenLoad() {
         showLoading()
         viewBinding.makeRvList.visibility = View.GONE
     }
